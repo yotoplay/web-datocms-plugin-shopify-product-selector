@@ -12,7 +12,7 @@
         "product",
         "selector"
     ],
-    "description": "Introducing a cutting-edge CMS plugin for Shopify – effortlessly select and manage products from DatoCMS! Seamlessly integrate your Shopify store with DatoCMS, giving you unparalleled control and flexibility in choosing and organizing your products. With this innovative plugin, you can easily curate, update, and showcase your Shopify product catalog, empowering you to provide a seamless shopping experience for your customers. Take your Shopify store to new heights with the power of DatoCMS product selection plugin!",
+    "description": "Boost your Shopify store with our DatoCMS plugin – select and manage products effortlessly! Seamlessly integrate and curate your Shopify catalog for a seamless shopping experience. Elevate your store now!",
     "dependencies": {
         "@types/lodash": "^4.14.195",
         "@types/node": "^18.16.19",
