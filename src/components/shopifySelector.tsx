@@ -63,7 +63,9 @@ const ShopifySelector: FC<Props> = ({ modalCtx }) => {
                                     onClick={() => setActiveStore(store)}
                                     key={store.name}
                                 >
-                                    {store.name}
+                                    <p style={{ minHeight: '20px' }}>
+                                        {store.name ?? 'Store'}
+                                    </p>
                                 </DropdownOption>
                             );
                         })}

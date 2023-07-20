@@ -2,21 +2,27 @@ import { RenderConfigScreenCtx } from 'datocms-plugin-sdk';
 import { Canvas } from 'datocms-react-ui';
 import { Formik, Field, Form, FormikHelpers, FieldArray } from 'formik';
 import { Button } from 'datocms-react-ui';
+import { isEmpty } from '../utils/helpers';
 // , TextInput, Spinner
 
 type Props = {
     ctx: RenderConfigScreenCtx;
 };
 
+type StoreType = {
+    name: string;
+    storeUrl: string;
+    storefrontApiAccessToken: string;
+};
 interface Values {
-    stores: {
-        name: string;
-        storeUrl: string;
-        storefrontApiAccessToken: string;
-    }[];
+    stores: StoreType[];
 }
 
 export default function ConfigScreen({ ctx }: Props) {
+    console.log(
+        '🚀 ~ file: ConfigScreen.tsx:20 ~ ConfigScreen ~ ctx:',
+        ctx.plugin.attributes.parameters
+    );
     return (
         <Canvas ctx={ctx}>
             <p>Welcome to Shopify Product Selector.</p>
@@ -26,14 +32,17 @@ export default function ConfigScreen({ ctx }: Props) {
             </p>
             <Formik
                 initialValues={{
-                    stores: [
-                        {
-                            name: 'Grapch Store',
-                            storeUrl: 'graphql',
-                            storefrontApiAccessToken:
-                                '078bc5caa0ddebfa89cccb4a1baa1f5c',
-                        },
-                    ],
+                    stores: isEmpty(ctx.plugin.attributes.parameters)
+                        ? [
+                              {
+                                  name: 'Grapch Store',
+                                  storeUrl: 'graphql',
+                                  storefrontApiAccessToken:
+                                      '078bc5caa0ddebfa89cccb4a1baa1f5c',
+                              },
+                          ]
+                        : (ctx.plugin.attributes.parameters
+                              .stores as StoreType[]),
                 }}
                 onSubmit={(
                     values: Values,
