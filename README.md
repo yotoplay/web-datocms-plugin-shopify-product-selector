@@ -1,3 +1,7 @@
-# [Your plugin name]
+# DatoCMS Plugin for Selecting Shopify Products
 
-[Describe what your plugin does, and how users you can configure it! Screenshots are always welcome!]
+Boost your Shopify store with our DatoCMS plugin – select and manage products effortlessly! Seamlessly integrate and curate your Shopify catalog for a seamless shopping experience. Elevate your store now!
+
+## Authors
+
+-   Mattias Bylin [@pandalabco](https://www.github.com/pandalabco)
