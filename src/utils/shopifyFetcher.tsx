@@ -19,6 +19,7 @@ const productFragment = `
   images(first: 1) {
     edges {
       node {
+        url
         src: transformedSrc(crop: CENTER, maxWidth: 200, maxHeight: 200)
       }
     }
