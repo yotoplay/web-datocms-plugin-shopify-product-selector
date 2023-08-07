@@ -3,6 +3,7 @@ const productFragment = `
   title
   handle
   description
+  descriptionHtml
   onlineStoreUrl
   availableForSale
   productType
