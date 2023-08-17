@@ -44,8 +44,17 @@ const UpdateProduct: FC<Props> = ({ modalCtx }) => {
                         flexDirection: 'column',
                         overflow: 'hidden',
                         gap: '20px',
+                        marginBottom: '20px',
                     }}
                 >
+                    <p style={{ color: 'GrayText' }}>
+                        Note: Enhance your product display with updates here.
+                        Customize titles, descriptions, images for your
+                        storefront without altering your Shopify inventory. For
+                        instance, showcase a background-free image using this
+                        plugin, exclusively on your frontend, while retaining
+                        the original on your Shopify store..
+                    </p>
                     <TextInput
                         name="title"
                         id="title"
@@ -85,6 +94,64 @@ const UpdateProduct: FC<Props> = ({ modalCtx }) => {
                             })
                         }
                     />
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            flexWrap: 'wrap',
+                            justifyContent: 'start',
+                            alignItems: 'start',
+                            minWidth: '250px',
+                        }}
+                    >
+                        <div
+                            style={{
+                                margin: 'auto',
+                                minWidth: '250px',
+                                height: '250px',
+                                backgroundPosition: 'center',
+                                backgroundSize: 'contain',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundImage: `url(${product.node.images.edges[0].node.src})`,
+                            }}
+                        />
+                        <Button
+                            onClick={async () => {
+                                const item = await ctx.selectUpload({
+                                    multiple: false,
+                                });
+
+                                if (item) {
+                                    setProduct({
+                                        node: {
+                                            ...product.node,
+                                            images: {
+                                                edges: [
+                                                    {
+                                                        node: {
+                                                            src:
+                                                                item?.attributes
+                                                                    ?.url ?? '',
+                                                            url:
+                                                                item?.attributes
+                                                                    ?.url ?? '',
+                                                        },
+                                                    },
+                                                ],
+                                            },
+                                        },
+                                    });
+                                    ctx.notice(`Image drafted!`);
+                                }
+                            }}
+                            type="button"
+                            buttonType="primary"
+                            buttonSize="s"
+                            fullWidth
+                        >
+                            Update Asset
+                        </Button>
+                    </div>
                     <Button
                         onClick={async () => modalCtx.resolve(product)}
                         type="button"

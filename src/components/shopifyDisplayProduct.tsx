@@ -31,6 +31,7 @@ export type ProductType = {
                 {
                     node: {
                         src: string;
+                        url?: string;
                     };
                 }
             ];
@@ -67,7 +68,15 @@ const ShopifyDisplayProduct: FC<Props> = ({ product, ctx }) => {
                 gap: '10px',
             }}
         >
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    gap: '10px',
+                }}
+            >
                 <Button type="button" onClick={handleOpenModal}>
                     Select a new product
                 </Button>
@@ -81,6 +90,7 @@ const ShopifyDisplayProduct: FC<Props> = ({ product, ctx }) => {
             </p>
             <div
                 style={{
+                    width: '100%',
                     border: '0px solid black',
                     display: 'flex',
                     flexDirection: 'row',

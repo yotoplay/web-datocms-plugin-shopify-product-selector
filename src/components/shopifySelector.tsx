@@ -32,6 +32,7 @@ const ShopifySelector: FC<Props> = ({ modalCtx }) => {
                     console.log('🚀 ~ file: shopifySelector.tsx:47 ~ err', err);
                 });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeStore]);
     return (
         <div
