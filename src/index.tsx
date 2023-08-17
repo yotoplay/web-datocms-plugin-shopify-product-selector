@@ -9,6 +9,7 @@ import ConfigScreen from './entrypoints/ConfigScreen';
 import 'datocms-react-ui/styles.css';
 import ShopifyState from './components/shopifyState';
 import ShopifySelector from './components/shopifySelector';
+import UpdateProduct from './components/updateProduct';
 
 connect({
     renderConfigScreen(ctx) {
@@ -25,14 +26,20 @@ connect({
         ];
     },
     renderManualFieldExtensionConfigScreen(fieldExtensionId, ctx) {
-        if (fieldExtensionId === 'shopifySelectorProduct') {
+        if (
+            fieldExtensionId === 'shopifySelectorProduct' ||
+            fieldExtensionId === 'shopify_selector_product'
+        ) {
             return render(
                 <div style={{ color: 'green' }}>Shopify Product Selector</div>
             );
         }
     },
     renderFieldExtension(fieldExtensionId, ctx: RenderFieldExtensionCtx) {
-        if (fieldExtensionId === 'shopifySelectorProduct') {
+        if (
+            fieldExtensionId === 'shopifySelectorProduct' ||
+            fieldExtensionId === 'shopify_selector_product'
+        ) {
             return render(<ShopifyState ctx={ctx} />);
         }
     },
@@ -42,6 +49,12 @@ connect({
                 return render(
                     <Canvas ctx={ctx}>
                         <ShopifySelector modalCtx={ctx} />
+                    </Canvas>
+                );
+            case 'upadateProductModal':
+                return render(
+                    <Canvas ctx={ctx}>
+                        <UpdateProduct modalCtx={ctx} />
                     </Canvas>
                 );
         }

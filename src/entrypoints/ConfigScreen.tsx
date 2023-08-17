@@ -19,10 +19,7 @@ interface Values {
 }
 
 export default function ConfigScreen({ ctx }: Props) {
-    console.log(
-        '🚀 ~ file: ConfigScreen.tsx:20 ~ ConfigScreen ~ ctx:',
-        ctx.plugin.attributes.parameters
-    );
+    console.log('🚀 ~ file: ConfigScreen.tsx:20 ~ ConfigScreen ~ ctx:', ctx);
     return (
         <Canvas ctx={ctx}>
             <p>Welcome to Shopify Product Selector.</p>

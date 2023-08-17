@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { RenderFieldExtensionCtx, RenderModalCtx } from 'datocms-plugin-sdk';
 import {
     Button,
@@ -22,6 +22,17 @@ const ShopifySelector: FC<Props> = ({ modalCtx }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [shopifyProducts, setShopifyProducts] = useState<any[] | null>(null);
     const stores = ctx.plugin.attributes.parameters?.stores as any[];
+    useEffect(() => {
+        if (activeStore) {
+            fetchProducts(activeStore, searchTerm)
+                .then((products) => {
+                    setShopifyProducts(products);
+                })
+                .catch((err) => {
+                    console.log('🚀 ~ file: shopifySelector.tsx:47 ~ err', err);
+                });
+        }
+    }, [activeStore]);
     return (
         <div
             style={{
@@ -52,23 +63,25 @@ const ShopifySelector: FC<Props> = ({ modalCtx }) => {
                                 open ? <CaretUpIcon /> : <CaretDownIcon />
                             }
                         >
-                            Select a store...
+                            {activeStore?.name ?? 'Select a store...'}
                         </Button>
                     )}
                 >
                     <DropdownMenu>
-                        {stores?.map((store: any) => {
-                            return (
-                                <DropdownOption
-                                    onClick={() => setActiveStore(store)}
-                                    key={store.name}
-                                >
-                                    <p style={{ minHeight: '20px' }}>
-                                        {store.name ?? 'Store'}
-                                    </p>
-                                </DropdownOption>
-                            );
-                        })}
+                        <div style={{ minHeight: '50px' }}>
+                            {stores?.map((store: any) => {
+                                return (
+                                    <DropdownOption
+                                        onClick={() => setActiveStore(store)}
+                                        key={store.name}
+                                    >
+                                        <p style={{ minHeight: '20px' }}>
+                                            {store.name ?? 'Store'}
+                                        </p>
+                                    </DropdownOption>
+                                );
+                            })}
+                        </div>
                     </DropdownMenu>
                 </Dropdown>
                 {activeStore && (
