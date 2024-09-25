@@ -1,7 +1,7 @@
 # DatoCMS Plugin for Selecting Shopify Products
 
-Boost your Shopify store with our DatoCMS plugin – select and manage products effortlessly! Seamlessly integrate and curate your Shopify catalog for a seamless shopping experience. Elevate your store now!
+Forked as a starting point for our own product-picker. Could be enhanced to be multi-store-aware.
 
 ## Authors
 
--   Mattias Bylin [@pandalabco](https://www.github.com/pandalabco)
+-   Forked from original by Mattias Bylin [@pandalabco](https://www.github.com/pandalabco)
